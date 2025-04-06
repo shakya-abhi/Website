@@ -1,0 +1,372 @@
+:root {
+  --primary-color: #00f2ff;
+  --text-color: #ffffff;
+  --bg-color: #000000;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+.light-mode {
+  --primary-color: #0066ff;
+  --text-color: #333333;
+  --bg-color: #f5f5f5;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, var(--bg-color), #1a1a1a);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+/* Theme Switch */
+.theme-switch {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+  cursor: pointer;
+  background: var(--glass-bg);
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.theme-switch:hover {
+  transform: scale(1.1);
+}
+
+/* Glass Effect */
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin: 20px;
+}
+
+nav a {
+  color: var(--text-color);
+  font-family: 'Orbitron', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 60px 20px;
+  margin: 20px;
+}
+
+.profile-container {
+  animation: fadeIn 1s ease-out;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--primary-color);
+}
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5em;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.1em;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Sections */
+section {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 40px;
+}
+
+section h2 {
+  font-size: 2em;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 2px;
+  bottom: -10px;
+  left: 0;
+  background-color: var(--primary-color);
+}
+
+/* About Section */
+.about-content {
+  display: grid;
+  gap: 20px;
+  animation: slideUp 0.8s ease-out;
+}
+
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.skill-card {
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+}
+
+.skill-card i {
+  font-size: 2.5em;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.skill-card h3 {
+  margin-bottom: 15px;
+}
+
+.skill-bar {
+  height: 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.progress {
+  height: 100%;
+  background: var(--primary-color);
+  border-radius: 5px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s ease;
+}
+
+.progress.animate {
+  transform: scaleX(1);
+}
+
+/* Projects Section */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.project-card {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  background: var(--glass-bg);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+.project-content {
+  padding: 20px;
+}
+
+.project-content h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.project-tags span {
+  background: var(--primary-color);
+  color: var(--bg-color);
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.social-icon {
+  color: var(--primary-color);
+  font-size: 1.8em;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--text-color);
+  transform: translateY(-5px);
+  text-shadow: 0 0 20px var(--primary-color);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  margin: 50px 20px 20px 20px;
+}
+
+.copyright {
+  margin-top: 15px;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+
+  header h1 {
+    font-size: 2em;
+  }
+
+  section {
+    padding: 30px 20px;
+    margin: 20px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-links {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  header h1 {
+    font-size: 1.8em;
+  }
+
+  .subtitle {
+    font-size: 1em;
+  }
+
+  section h2 {
+    font-size: 1.6em;
+  }
+}
